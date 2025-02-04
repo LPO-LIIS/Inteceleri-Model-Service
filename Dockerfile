@@ -14,7 +14,9 @@ RUN apt-get update && \
 COPY requirements.txt requirements.txt
     
 # Instala as dependências do Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir \
+    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copia o conteúdo da aplicação para o diretório de trabalho
 COPY . .

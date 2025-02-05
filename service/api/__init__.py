@@ -52,6 +52,7 @@ def create_api(config_name="production"):
             "```\n"
         ),
         lifespan=lifespan,
+        root_path="/inteceleri/models/api"
     )
 
     # Configurações baseadas no ambiente

@@ -1,7 +1,7 @@
 import os
 import sys
 import logging
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.base import BaseHTTPMiddleware
 
@@ -11,13 +11,6 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from api.routes.router import routes
 from api.hf_models import lifespan
 from config import DevelopmentConfig, TestingConfig, ProductionConfig
-
-class RootPathMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next):
-        # Obtém o prefixo do proxy reverso
-        root_path = request.headers.get("X-Forwarded-Prefix", "")
-        request.scope["root_path"] = root_path
-        return await call_next(request)
 
 def create_api(config_name="production"):
     """
@@ -58,7 +51,8 @@ def create_api(config_name="production"):
             "}\n"
             "```\n"
         ),
-        lifespan=lifespan
+        lifespan=lifespan,
+        root_path="/inteceleri/models/api" # URL Path: https://services.liis.com.br{path}
     )
     
     # Adiciona o Middleware que ajusta dinamicamente o root_path

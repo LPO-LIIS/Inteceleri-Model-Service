@@ -52,7 +52,7 @@ def create_api(config_name="production"):
             "```\n"
         ),
         lifespan=lifespan,
-        root_path="/inteceleri/models/api" # URL Path: https://services.liis.com.br{path}
+        root_path="/" # URL Path: https://services.liis.com.br{path}
     )
 
     # Configurações baseadas no ambiente

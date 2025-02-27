@@ -54,9 +54,6 @@ def create_api(config_name="production"):
         lifespan=lifespan,
         root_path="/inteceleri/models/api" # URL Path: https://services.liis.com.br{path}
     )
-    
-    # Adiciona o Middleware que ajusta dinamicamente o root_path
-    app.add_middleware(RootPathMiddleware)
 
     # Configurações baseadas no ambiente
     configure_api(app, config_name)

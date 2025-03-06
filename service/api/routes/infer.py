@@ -150,8 +150,9 @@ async def mobilenet3d(
         image = image.resize((img_width, img_height), Image.BICUBIC)
         
         # Converte para array NumPy e normaliza
-        img_array = np.array(image, dtype=np.float32) / 255.0
-        img_array = np.expand_dims(img_array, axis=0)  # Adiciona dimensão de batch
+        img_array = np.array(image.convert("RGB"), dtype=np.float32) / 255.0  # Garante 3 canais
+        img_array = np.expand_dims(img_array, axis=0)  # Adiciona dimensão de batch corretamente
+
 
         # Executa a inferência
         request.app.state.mobilenet_model.set_tensor(input_details[0]["index"], img_array)

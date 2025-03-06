@@ -6,8 +6,8 @@ services:
       - "8000"
     env_file:
       - .env
-    mem_limit: 1536M
-    cpus: 2.0
+    mem_limit: 3072M
+    cpus: 4.0
     restart: always
     volumes:
       - models_data:/app/models

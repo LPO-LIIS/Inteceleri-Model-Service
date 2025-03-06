@@ -9,7 +9,7 @@ model_dir = os.getenv("MODEL_DIR")
 HF_TOKEN = os.getenv("HF_TOKEN")
 
 # Informações do modelo
-REPO_ID = "LPO-UFPA/resnet50-3d"
+REPO_ID = "LPO-UFPA/inteceleri-shapes"
 
 # Faz o download apenas se o modelo ainda não existir
 if not os.path.exists(os.path.join(model_dir, "preprocessor_config.json")):
